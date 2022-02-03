@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <title>Self Portrait</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script type="text/javascript">
+            let clicks = 0;
+            window.addEventListener('load', init);
+            
+            function init(){
+                // document.body.addEventListener('click', clickCalled);
+                // document.getElementById("mouseoverelement").addEventListener('mousemove', clickCalled);
+                document.getElementById("btnID").addEventListener('click', show);
+                // document.getElementById("beijing").addEventListener('mousemove', show);
+
+                // function clickCalled(){
+                //     clicks++;
+                //     console.log(clicks);
+
+                //     let clicksElement = document.getElementById("clicks");
+                //     clicksElement.innerHTML = clicks;
+                //     clicksElement.style.fontSize = clicks + "px";
+                // } 
+
+                function show(){
+                    document.getElementById('me').style.display = "block";
+                    document.getElementById('btnID').style.display = "none";
+
+                    // document.getElementById('textB').style.display = "block";
+                    // document.getElementById('beijing').style.display = "none";
+                }
+
+                
+            }
+
+            $(document).on('scroll', function(){
+                $('h1').css("left", Math.max(500 - 0.35*window.scrollY) + "px")
+                $('h2').css("left", Math.max(6500 - 0.35*window.scrollY) + "px")
+            })
+
+
+        </script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                height: 24000px;
+                overflow-x: hidden;
+                background-color: #00947a;
+            }
+            h1{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                white-space: nowrap;
+                font-size: 5em;
+                color:#1b6d5e;
+                left:500px;
+            }
+            img{
+                max-width: 100%;
+            }
+            h1 span{
+                animation: animate 5s linear infinite;
+            }
+            h1 span:nth-child(even){
+                animation-delay: 0.4s;
+            }
+            @keyframes animate{
+                0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92%{
+                    color: #1b6d5e;
+                    text-shadow: none;
+                }
+                18.1%,20.1%,30%, 50%, 60.1%, 65%, 80.1%, 90%,92.1%, 100%{
+                    color: #ffffff;
+                    text-shadow: 0 0 10px #03bcf4, 
+                    0 0 20px #03bcf4,
+                    0 0 40px #03bcf4,
+                    0 0 80px #03bcf4,
+                    0 0 160px #03bcf4;
+                }
+            }
+            #me{
+                display:none;
+            }
+            #btnID{
+                font-size: 0.9em;
+                padding: 14px 40px;
+                border-radius: 12px;
+                background-color: #1b6d5e;
+                color: #ffffff;
+                border: none;
+                margin-bottom: 10px;
+                margin-top: 0;
+                transition-duration: 0.4s;
+            }
+            #btnID:hover{
+                background-color: #03bcf4;
+            }
+            section{
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                position: relative;
+                z-index: 1;
+            }
+            .travel{
+                position: absolute;
+                z-index: 2;
+            }
+            .travel img{
+                width: 5000px;
+                /* margin-left: 0; */
+            }
+            section .runway{
+                position: relative;
+                width: 400px;
+                height: 4020px;
+                background: cornflowerblue;
+                z-index: 3;
+                top: -4022px;
+                margin-left: 35vw;
+                opacity: 0.5;
+                border-left: 20px solid rgba(0, 0, 0, 0, 0.25);
+                border-right: 20px solid rgba(0, 0, 0, 0, 0.25);
+            }
+            .empty{
+                height: 15000px;
+            }
+            section .runway::before{
+                content:'';
+                position: absolute;
+                top: 0;
+                margin-left: 200px;
+                transform: translateX(-70%);
+                width: 20px;
+                height: 100%;
+                background: repeating-linear-gradient(transparent 0%, transparent 50%, #fff 50%, #fff 100%);
+                background-size: 20px 320px;
+                animation: animateRunway 1s linear infinite;
+            }
+            section:active .runway::before{
+                animation: animateRunway 0.25s linear infinite;
+            }
+            @keyframes animateRunway{
+                0%{
+                    background-position-y: 0px;
+                }
+                100%{
+                    background-position-y: 320px;
+                }
+            }
+            .plane{
+                position: absolute;
+                bottom: 100px;
+                max-width: 250px;
+                pointer-events: none;
+                filter: drop-shadow(10px 10px 0 rgba(0, 0, 0, 0.5));
+            }
+            section p{
+                position: absolute;
+                z-index: 4;
+                font-size: 200px;
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                margin-left: 30vw;
+                /* display: none; */
+            }
+            h2{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                white-space: nowrap;
+                font-size: 5em;
+                color:#1b6d5e;
+                left:500px;
+            }
+            
+
+        </style>
+    </head>
+
+    <body>
+        <h1>Hi! I'm <button type="button" id="btnID" onclick="show()">Ruoxiao Sun.</button> an UX/UI designer who <span>observes</span>, <span>thinks</span>, <span>empathizes</span> and <span>iterates</span> thoughtful digital experience. </h1>
+        
+
+        <div class="profile">
+            <img id="me" src="me.PNG">
+        </div>
+        <div class="empty"></div>
+
+
+        <!-- <div>Number of Clicks</div>
+        <div id="clicks">0</div>
+        <div id="mouseoverelement">Hover Here</div> -->
+        <section>
+            <div class="travel">
+                    <p id="textB">Beijing</p>
+                    <img src="beijing.JPG" id="beijing">
+                    <p id="textL">Los Angeles</p>
+                    <img src="la.JPG" id="la">
+                    <p id="textN">New <br>York</p>
+                    <img src="ny.jpeg" id="ny">
+                    <div class="runway"></div>
+            </div>
+            
+        
+        </section>
+        <h2> Out of design, I love to do some illustrations and travel all around the world.</h2>
+
+    </body>
+
+
+
+
+
+
+
+</html>
